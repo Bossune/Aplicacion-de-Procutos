@@ -428,6 +428,7 @@ INSERT INTO `comuna` (`id`, `nombre`, `id_provincia`) VALUES
 CREATE TABLE `imagen_producto` (
   `id` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
+  `imagen` longblob NOT NULL,
   `url` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `fecha_creacion` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
