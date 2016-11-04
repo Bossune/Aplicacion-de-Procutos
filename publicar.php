@@ -88,7 +88,7 @@
 								<?php
 								    require('config/conexionPDO.php');
                                     $conn = Conectar();
-                                    $sql = "SELECT id, nombre FROM tbl_comuna";
+                                    $sql = "SELECT id, nombre FROM comuna";
                                     $stmt = $conn->prepare($sql);
                                     $result = $stmt->execute();
                                     $rows = $stmt->fetchAll(\PDO::FETCH_OBJ);
