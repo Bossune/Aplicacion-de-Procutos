@@ -43,12 +43,7 @@
 								<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">
 									Categorias <span class="caret"></span>
 								</a>
-								<ul class="dropdown-menu">
-									<li><a href="">Computadores y electronica</a></li>
-									<li><a href="">Hogar</a></li>
-									<li><a href="">Tiempo libre</a></li>
-									<li><a href="">Vehiculos</a></li>
-								</ul>
+								<?php include('./ajax/categorias.php') ?>
 							</li>
 							<li><a href="">Favoritos</a></li>
 						</ul>
