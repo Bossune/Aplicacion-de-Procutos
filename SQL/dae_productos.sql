@@ -22,16 +22,43 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `categoria`
---
 
 CREATE TABLE `categoria` (
   `id` int(11) NOT NULL,
   `nombre` varchar(120) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
--- --------------------------------------------------------
+--
+-- Volcado de datos para la tabla `categoria`
+--
+
+INSERT INTO `categoria` (`id`, `nombre`) VALUES
+(1, 'Computadoras y Electronica'),
+(2, 'Hogar'),
+(3, 'Tiempo Libre'),
+(4, 'Vehiculos'),
+(5, 'Varios');
+
+--
+-- ndices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `categoria`
+--
+ALTER TABLE `categoria`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `categoria`
+--
+ALTER TABLE `categoria`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Estructura de tabla para la tabla `comentario`
@@ -611,9 +638,7 @@ INSERT INTO `valoracion` (`id`, `id_usuario_valorado`, `id_usuario_valorando`, `
 --
 -- Indices de la tabla `categoria`
 --
-ALTER TABLE `categoria`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`);
+
 
 --
 -- Indices de la tabla `comentario`
