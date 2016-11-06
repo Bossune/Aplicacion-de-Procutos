@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 05-11-2016 a las 17:34:26
+-- Tiempo de generación: 06-11-2016 a las 01:56:10
 -- Versión del servidor: 5.6.33
 -- Versión de PHP: 5.6.26
 
@@ -28,14 +28,14 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categoria` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(120) COLLATE utf8_spanish_ci NOT NULL
+  `nombre_categoria` varchar(120) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `categoria`
 --
 
-INSERT INTO `categoria` (`id`, `nombre`) VALUES
+INSERT INTO `categoria` (`id`, `nombre_categoria`) VALUES
 (1, 'Computadoras y Electronica'),
 (2, 'Hogar'),
 (3, 'Tiempo Libre'),
@@ -572,7 +572,7 @@ INSERT INTO `provincia` (`id`, `nombre`, `id_region`) VALUES
 
 CREATE TABLE `region` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(64) COLLATE utf8_spanish_ci NOT NULL,
+  `nombre_region` varchar(64) COLLATE utf8_spanish_ci NOT NULL,
   `ordinal` varchar(4) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -580,7 +580,7 @@ CREATE TABLE `region` (
 -- Volcado de datos para la tabla `region`
 --
 
-INSERT INTO `region` (`id`, `nombre`, `ordinal`) VALUES
+INSERT INTO `region` (`id`, `nombre_region`, `ordinal`) VALUES
 (1, 'Arica y Parinacota', 'XV'),
 (2, 'Tarapacá', 'I'),
 (3, 'Antofagasta', 'II'),
