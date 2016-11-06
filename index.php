@@ -21,7 +21,7 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="./assets/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="assets/css/simple-sidebar.css">
-    
+
     <script src="./assets/js/jquery-3.1.1.min.js"></script>
     <script src="assets/js/barra_lateral.js"></script>
 
@@ -58,6 +58,7 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li><a href="./perfil.php?id=<?php echo $_SESSION['id'];?>">Mi Perfil</a></li>
+                  <li><a href="./publicar.php">Publicar</a></li>
                   <li><a href="./opciones.php">Opciones</a></li>
                   <li><a href="./logout.php">Cerrar Sesión</a></li>
                 </ul>
@@ -74,14 +75,14 @@
 			</nav>
 		</header>
     <div class="container">
-        
-    
+
+
     	<div class="row">
-            
+
             <div id="sidebar-wrapper" >
                 <ul class="sidebar-nav">
                     <form method="get" action="./Busqueda.php">
-                
+
                         <li>
                             Busqueda:
                         </li>
@@ -91,16 +92,16 @@
                         <br>
                         <li>
                             Precio:
-                        </li>    
-                        <li> 
+                        </li>
+                        <li>
                               <input  class="form-control"  type="number"  placeholder="0" name="precio" id="precio">
                         </li>
-                        <br>  
+                        <br>
 
-                        <li>        
-                            <input  id="slider_precio" type="range"  step="1000" min=0  max="10000000" > 
+                        <li>
+                            <input  id="slider_precio" type="range"  step="1000" min=0  max="10000000" >
                         </li>
-                        <br>  
+                        <br>
                         <li> <button type="submit" >Buscar</button></li>
                         <br>
                         <li >
@@ -112,13 +113,13 @@
                                 <?php get_Categorias()?>
                             </ul>
                         </li>
-                        
-                      
+
+
                     </form>
                 </ul>
             </div>
-            
-            
+
+
     		<div class="col-xs-10 col-xs-offset-1">
     			<div id="carrusel-de-nino" class="carousel slide" data-ride="carousel">
     			  <!-- Indicators -->
@@ -148,7 +149,7 @@
     	</div>
     </div>
 
-   
+
 		<script src="./assets/js/bootstrap.min.js"></script>
   </body>
 </html>
