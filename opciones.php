@@ -12,15 +12,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Vende Todo - Perfil</title>
-    <!-- Bootstrap -->
-    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css" >
-    <!-- Optional theme -->
     <link rel="stylesheet" href="./assets/css/bootstrap-theme.min.css">
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="./assets/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
   </head>
   <body>
     <header>
@@ -41,7 +36,12 @@
                 <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">
                 Categorias <span class="caret"></span>
                 </a>
-                <?php include('./ajax/categorias.php') ?>
+                <ul class="dropdown-menu">
+                  <li><a href="">Computadores y electronica</a></li>
+                  <li><a href="">Hogar</a></li>
+                  <li><a href="">Tiempo libre</a></li>
+                  <li><a href="">Vehiculos</a></li>
+                </ul>
               </li>
               <li><a href="">Favoritos</a></li>
             </ul>
@@ -105,12 +105,12 @@
             <hr/>
             <div class="panel-body">
               <div class="form-group">
-                <label for="exampleInputFile">File input</label>
-                <input type="file" id="exampleInputFile">
-                <p class="help-block">Example block-level help text here.</p>
+                <label for="exampleInputFile">Imagen de Perfil</label>
+                <input type="file" name="image" id="image"/>
+                <p class="help-block">Solo se pueden subir imagenes PNG y JPEG</p>
               </div>
               <div class="form-group">
-                <a href="#" class="btn btn-sm btn-block btn-primary" onclick="cambiarImage()">Cambiar Imagen</a>
+                <button class="btn btn-sm btn-default" onclick="uploadImage()"><i class="fa fa-upload"></i> Subir Imagen</button>
               </div>
             </div>
           </div>
@@ -119,8 +119,9 @@
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
     <script src="./assets/js/bootstrap.min.js"></script>
     <script src="./assets/js/opciones.js"></script>
+    <script src="./assets/js/upload.js"></script>
   </body>
 </html>

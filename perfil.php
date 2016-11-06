@@ -9,7 +9,7 @@
       $err = "Este usuario no existe";
     }else{
       $row = $result->fetch_array(MYSQLI_BOTH);
-      $res = "SELECT b.nombre, b.avatar, a.descripcion, a.fecha FROM comentario a, usuario b where a.id_usuario_comentado = ".$_GET['id']." and a.id_usuario_comentando = b.id ORDER BY a.fecha DESC LIMIT 5";
+      $res = "SELECT b.id, b.nombre, b.avatar, a.descripcion, a.fecha FROM comentario a, usuario b where a.id_usuario_comentado = ".$_GET['id']." and a.id_usuario_comentando = b.id ORDER BY a.fecha DESC LIMIT 5";
       $result2 = $mysqli->query($res);
       $sqlNota = "SELECT avg(nota) as nota FROM valoracion where id_usuario_valorado = ".$_GET['id']."";
       $nota = $mysqli->query($sqlNota);
@@ -30,15 +30,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Vende Todo - Perfil</title>
-    <!-- Bootstrap -->
-    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css" >
-    <!-- Optional theme -->
     <link rel="stylesheet" href="./assets/css/bootstrap-theme.min.css">
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="./assets/js/bootstrap.min.js"></script>
   </head>
   <body>
     <header>
@@ -59,7 +53,12 @@
                 <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">
                 Categorias <span class="caret"></span>
                 </a>
-                <?php include('./ajax/categorias.php') ?>
+                <ul class="dropdown-menu">
+                  <li><a href="">Computadores y electronica</a></li>
+                  <li><a href="">Hogar</a></li>
+                  <li><a href="">Tiempo libre</a></li>
+                  <li><a href="">Vehiculos</a></li>
+                </ul>
               </li>
               <li><a href="">Favoritos</a></li>
             </ul>
@@ -125,12 +124,12 @@
             <hr/>
             <li class="media">
               <div class="media-left">
-                <a href="#">
-                <img class="media-object img-rounded" src="./assets/images/users/<?php echo $row2['avatar']; ?>" width="48px">
+                <a href="./perfil.php?id= <?php echo $row2['id']; ?>">
+                  <img class="media-object img-rounded" src="./assets/images/users/<?php echo $row2['avatar']; ?>" width="48px">
                 </a>
               </div>
               <div class="media-body">
-                <h5 class="media-heading"><?php echo $row2['nombre']; ?> <small class="text-muted pull-right"><?php echo $row2['fecha']; ?></small></h5>
+                <h5 class="media-heading"><a href="./perfil.php?id=<?php echo $row2['id']; ?>"><?php echo $row2['nombre']; ?> </a><small class="text-muted pull-right"><?php echo $row2['fecha']; ?></small></h5>
                 <p><?php echo $row2['descripcion']; ?></p>
               </div>
             </li>
