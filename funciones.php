@@ -8,14 +8,11 @@
             while ($row = mysqli_fetch_object($resultado))
             {
                  echo " <li>
-                        <input type=\"checkbox\" name=Categorias[] value=\"$row->id\">$row->nombre
+                        <input type=\"checkbox\" name=Categorias[] value=\"$row->id\">$row->nombre_categoria
                         </li>";
             }    
         }
-        else
-        {
-            echo "E<.";
-        }
+       
     }   
     function get_Categorias_nav()
     {
@@ -23,12 +20,14 @@
         $resultado = $mysqli->query("SELECT * FROM categoria");
         if($resultado->num_rows > 0)
         {
+            echo "<ul class='dropdown-menu' name='cat'>";
             while ($row = mysqli_fetch_object($resultado))
             {
                  echo " <li>
-                        <a href=\"\">$row->nombre</a>
+                        <a href=\"./Busqueda.php?categorias=$row->id\">$row->nombre_categoria</a>
                         </li>";
-            }    
+            }
+            echo "</ul>";
         }
         else
         {
@@ -48,7 +47,7 @@
                 if ($contador == 1)
                 {
                  echo "<div class=\"item active\">
-    				  <a href=><img src=\"./get_img_producto.php?id=$row->id\" alt=\"...\"></a>
+    				 <a href=\"./producto.php?Idn2=1&id_img=$row->id\"> <img src=\"./get_img_producto.php?id=$row->id\" alt=\"...\"></a>
     				  <div class=\"carousel-caption\">
     					<h3>$row->nombre<h3>
     				  </div>
@@ -57,7 +56,8 @@
                 else
                 {
                     echo "<div class=\"item\">
-    				  <img src=\"./get_img_producto.php?id=$row->id\"alt=\"...\">
+    				  <a href=\"./producto.php?Idn2=1&id_img=$row->id\"><img src=\"./get_img_producto.php?id=$row->id\" alt=\"...\"></a>
+
     				  <div class=\"carousel-caption\">
     					<h3>$row->nombre<h3>
     				  </div>
@@ -67,5 +67,24 @@
     				
             }    
         }
+    }
+    
+    function get_Regiones()
+    {
+        	require './config/db.php';
+			$cons1= "select id,nombre_region from region";
+			$resp1 = $mysqli->query($cons1);
+			
+			echo "<label>Buscar por Region</label><br>";
+			echo "<select style=\"max-width:90%;\" id='SelectReg' name='region' >";
+			echo "<option selected value=\"0\">...</option>";
+            echo "<optgroup>";
+
+			while ($fila1 = $resp1->fetch_array(MYSQLI_BOTH)) {
+				echo "<option value=".$fila1['id'].">".$fila1['nombre_region']."</option>";
+			}
+            echo "</optgroup>";
+			echo "</select>";
+        
     }
 ?>
