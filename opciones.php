@@ -5,6 +5,7 @@
     header('Location: ./');
     exit();
   }
+  $categorias = $mysqli->query("SELECT * FROM categoria");
   ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -37,13 +38,12 @@
                 Categorias <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a href="">Computadores y electronica</a></li>
-                  <li><a href="">Hogar</a></li>
-                  <li><a href="">Tiempo libre</a></li>
-                  <li><a href="">Vehiculos</a></li>
+                  <?php
+                  while ($rowC = $categorias->fetch_assoc()) { ?>
+                  <li><a href="./Busqueda.php?categorias=<?php echo $rowC['id'];?>"><?php echo $rowC['nombre_categoria'];?></a></li>
+                  <?php } ?>
                 </ul>
               </li>
-              <li><a href="">Favoritos</a></li>
             </ul>
             <?php if(isset($_SESSION['id'])){?>
             <ul class="nav navbar-nav navbar-right">

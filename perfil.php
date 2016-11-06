@@ -18,6 +18,9 @@
       if($rowNota['nota'] != null){
         $nn = round($rowNota['nota'], 1);
       }
+      $sqlProductos = "SELECT a.id, a.nombre, a.tipo_publicacion, b.imagen, b.id as bid FROM producto a, imagen_producto b WHERE a.id = b.id_producto and a.id_usuario = ".$_GET['id']." LIMIT 2";
+      $productos = $mysqli->query($sqlProductos);
+      $categorias = $mysqli->query("SELECT * FROM categoria");
     }
   }else{
     header('Location: ./');
@@ -54,13 +57,12 @@
                 Categorias <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a href="">Computadores y electronica</a></li>
-                  <li><a href="">Hogar</a></li>
-                  <li><a href="">Tiempo libre</a></li>
-                  <li><a href="">Vehiculos</a></li>
+                  <?php
+                  while ($rowC = $categorias->fetch_assoc()) { ?>
+                  <li><a href="./Busqueda.php?categorias=<?php echo $rowC['id'];?>"><?php echo $rowC['nombre_categoria'];?></a></li>
+                  <?php } ?>
                 </ul>
               </li>
-              <li><a href="">Favoritos</a></li>
             </ul>
             <?php if(isset($_SESSION['id'])){?>
             <ul class="nav navbar-nav navbar-right">
@@ -152,22 +154,18 @@
           <br/>
           <h6 class="text-uppercase text-muted">Algunos productos de <?php echo $row['nombre']; ?></h6>
           <hr/>
-          <div class="thumbnail">
-            <img src="https://www.disfruting.es/media/product/f1f/televisor-telefunken-tv-domus-48dsm-led-full-hd-48-smart-tv-wifi-c67.jpg" class="img-responsive" alt="...">
-            <div class="caption">
-              <h4>Smart TV Led Full HD 48"</h4>
-              <p>Venta/Intercambio</p>
-              <p><a href="#" class="btn btn-primary btn-xs" role="button">Ver producto</a></p>
-            </div>
-          </div>
-          <div class="thumbnail">
-            <img src="https://cdn1.macworld.co.uk/cmsdata/features/3605337/macbookair11_lifestyle_15_thumb800.jpg" class="img-responsive" alt="...">
-            <div class="caption">
-              <h4>Macbook Air 13"</h4>
-              <p>Venta</p>
-              <p><a href="#" class="btn btn-primary btn-xs" role="button">Ver producto</a></p>
-            </div>
-          </div>
+          <?php
+          while ($rowP = $productos->fetch_assoc()){
+               echo '<div class="thumbnail">
+                 <img src="data:image/jpeg;base64,'.base64_encode($rowP['imagen']).'" class="img-responsive" alt="...">
+                 <div class="caption">
+                   <h4>'.$rowP['nombre'].'</h4>
+                   <p>'.$rowP['tipo_publicacion'].'</p>
+                   <p><a href="producto.php?Idn2=1&id_img='.$rowP['bid'].'" class="btn btn-primary btn-xs" role="button">Ver producto</a></p>
+                 </div>
+               </div>';
+          }
+          ?>
         </div>
       </div>
     </div>
