@@ -21,7 +21,10 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="./assets/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="assets/css/simple-sidebar.css">
+    
+    <script src="./assets/js/jquery-3.1.1.min.js"></script>
     <script src="assets/js/barra_lateral.js"></script>
+
   </head>
   <body>
 		<header>
@@ -43,7 +46,7 @@
 								<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">
 									Categorias <span class="caret"></span>
 								</a>
-								<?php include('./ajax/categorias.php') ?>
+								<?php get_Categorias_nav();?>
 							</li>
 							<li><a href="">Favoritos</a></li>
 						</ul>
@@ -71,36 +74,51 @@
 			</nav>
 		</header>
     <div class="container">
-        <div id="sidebar-wrapper">
-            <form method="get" action="./Busqueda.php">
-                <ul class="sidebar-nav">
-                    <br>
-                    <li>
-                        Busqueda:
-                    </li>
-                    <li>
-                        <input  class="form-control" type="text"  placeholder="Ex:Motorola" name="producto">
-                    </li>
-                    <li>
-                        Precio:  <span id="precio">$10000</span>
-                    </li>
-                    <li>        
-                        <input onchange="get_Precio()"  name="precio" id="slider_precio" type="range" value="10000" step="5000" min=0  max="200000"> 
-                    </li>
-                    
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorias <b class="caret"></b> </a>
-                        <ul class="dropdown-menu" role="menu">
-                            <?php get_Categorias()?>
-                        </ul>
-                    </li>
-
-                    <li> <input type="submit" value="Buscar Producto"</li>
-                </ul>
-            </form>
-        </div>
+        
     
     	<div class="row">
+            
+            <div id="sidebar-wrapper" >
+                <ul class="sidebar-nav">
+                    <form method="get" action="./Busqueda.php">
+                
+                        <li>
+                            Busqueda:
+                        </li>
+                        <li>
+                            <input  class="form-control"  type="text"  placeholder="Ex:Motorola" name="producto">
+                        </li>
+                        <br>
+                        <li>
+                            Precio:
+                        </li>    
+                        <li> 
+                              <input  class="form-control"  type="number"  placeholder="0" name="precio" id="precio">
+                        </li>
+                        <br>  
+
+                        <li>        
+                            <input  id="slider_precio" type="range"  step="1000" min=0  max="10000000" > 
+                        </li>
+                        <br>  
+                        <li> <button type="submit" >Buscar</button></li>
+                        <br>
+                        <li >
+                            <?php get_Regiones()?>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorias <b class="caret"></b> </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <?php get_Categorias()?>
+                            </ul>
+                        </li>
+                        
+                      
+                    </form>
+                </ul>
+            </div>
+            
+            
     		<div class="col-xs-10 col-xs-offset-1">
     			<div id="carrusel-de-nino" class="carousel slide" data-ride="carousel">
     			  <!-- Indicators -->
@@ -130,7 +148,7 @@
     	</div>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+   
 		<script src="./assets/js/bootstrap.min.js"></script>
   </body>
 </html>
