@@ -47,7 +47,7 @@
                 if ($contador == 1)
                 {
                  echo "<div class=\"item active\">
-    				 <a href=\"./producto.php?Idn2=1&id_img=$row->id\"> <img src=\"./get_img_producto.php?id=$row->id\" alt=\"...\"></a>
+    				 <a class=\"img-responsive\"  href=\"./producto.php?id=$row->id\"> <img src=\"./get_img_producto.php?id=$row->id\" alt=\"...\"></a>
     				  <div class=\"carousel-caption\">
     					<h3>$row->nombre<h3>
     				  </div>
@@ -56,7 +56,7 @@
                 else
                 {
                     echo "<div class=\"item\">
-    				  <a href=\"./producto.php?Idn2=1&id_img=$row->id\"><img src=\"./get_img_producto.php?id=$row->id\" alt=\"...\"></a>
+    				  <a href=\"./producto.php?id=$row->id\"><img src=\"./get_img_producto.php?id=$row->id\" alt=\"...\"></a>
 
     				  <div class=\"carousel-caption\">
     					<h3>$row->nombre<h3>

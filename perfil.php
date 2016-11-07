@@ -18,7 +18,7 @@
       if($rowNota['nota'] != null){
         $nn = round($rowNota['nota'], 1);
       }
-      $sqlProductos = "SELECT a.id, a.nombre, a.tipo_publicacion, b.imagen, b.id as bid FROM producto a, imagen_producto b WHERE a.id = b.id_producto and a.id_usuario = ".$_GET['id']." LIMIT 2";
+      $sqlProductos = "SELECT a.id, a.nombre, a.precio, a.tipo_publicacion, b.imagen, b.id as bid FROM producto a, imagen_producto b WHERE a.id = b.id_producto and a.id_usuario = ".$_GET['id']." LIMIT 2";
       $productos = $mysqli->query($sqlProductos);
       $categorias = $mysqli->query("SELECT * FROM categoria");
     }
@@ -161,8 +161,8 @@
                  <img src="data:image/jpeg;base64,'.base64_encode($rowP['imagen']).'" class="img-responsive" alt="...">
                  <div class="caption">
                    <h4>'.$rowP['nombre'].'</h4>
-                   <p>'.$rowP['tipo_publicacion'].'</p>
-                   <p><a href="producto.php?Idn2=1&id_img='.$rowP['bid'].'" class="btn btn-primary btn-xs" role="button">Ver producto</a></p>
+                   <p>'.$rowP['tipo_publicacion'].' |  Precio:'.$rowP['precio'].'</p>
+                   <p><a href="producto.php?id='.$rowP['bid'].'" class="btn btn-primary btn-xs" role="button">Ver producto</a></p>
                  </div>
                </div>';
           }

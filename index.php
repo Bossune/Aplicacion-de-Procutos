@@ -63,7 +63,7 @@
         </header>
         <div class="container">
             <div class="row">
-                <div class="col-md-2">
+                <div>
                     <div id="sidebar-wrapper">
                         <ul class="sidebar-nav">
                             <form method="get" action="./Busqueda.php">

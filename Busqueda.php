@@ -212,12 +212,12 @@ else
                             while($row = $resultado->fetch_object())
                             {
                              echo "<tr>
-                                    <td><img id=\"image\" style=\"width:150px;height:150px;\" src=\"./get_img_producto.php?id=$row->id\"/></td>
+                                    <td><img id=\"image\" class=\"img-responsive\" style=\"width:150px;height:150px;\" src=\"./get_img_producto.php?id=$row->id\"/></td>
                                     <td>$row->nombre</td>
                                     <td>$row->id_categoria</td>
                                     <td>$row->nombre_region</td>
                                     <td>$row->precio</td>
-                                    <td><a href=\"./producto.php?Idn2=1&id_img=$row->id\"><button>Link</button></a></td>
+                                    <td><a href=\"./producto.php?id=$row->id\"><button>Link</button></a></td>
                                     </tr>";
                             }
                         }
