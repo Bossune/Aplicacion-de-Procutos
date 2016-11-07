@@ -1,3 +1,12 @@
+<?php
+	require './config/db.php';
+	session_start();
+	if(!isset($_SESSION['id'])){
+		header('Location: ./');
+		exit();
+	}
+	$categorias = $mysqli->query("SELECT * FROM categoria");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,38 +33,47 @@
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-1">
-						<span class="sr-only">Menu</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
+					<span class="sr-only">Menu</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
 					</button>
-					<a href="#" class="navbar-brand">Vende Todo</a>
+					<a href="./" class="navbar-brand">Vende Todo</a>
 				</div>
-
 				<div class="collapse navbar-collapse" id="navbar-1">
 					<ul class="nav navbar-nav">
 						<li class="dropdown">
 							<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">
-								Categorias <span class="caret"></span>
+							Categorias <span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="">Computadores y electronica</a></li>
-								<li><a href="">Hogar</a></li>
-								<li><a href="">Tiempo libre</a></li>
-								<li><a href="">Vehiculos</a></li>
+								<?php
+								while ($rowC = $categorias->fetch_assoc()) { ?>
+								<li><a href="./Busqueda.php?categorias=<?php echo $rowC['id'];?>"><?php echo $rowC['nombre_categoria'];?></a></li>
+								<?php } ?>
 							</ul>
 						</li>
-						<li><a href="">Favoritos</a></li>
-						<li><a href="">Mi cuenta</a></li>
 					</ul>
-
-					<form class="navbar-form navbar-right" role="search">
-							<div class="form-group">
-									 <input type="text" class="form-control" placeholder="Correo">
-									 <input type="password" class="form-control" placeholder="Contraseña">
-							</div>
-							<button type="submit" class="btn btn-default">entrar</button>
-					</form>
+					<?php if(isset($_SESSION['id'])){?>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">
+							<?php echo $_SESSION['nombre'];?> <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="./perfil.php?id=<?php echo $_SESSION['id'];?>">Mi Perfil</a></li>
+								<li><a href="./publicar.php">Publicar</a></li>
+								<li><a href="./opciones.php">Opciones</a></li>
+								<li><a href="./logout.php">Cerrar Sesión</a></li>
+							</ul>
+						</li>
+					</ul>
+					<?php }else{?>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="./login.php" class="text-info"> Iniciar Sesión </a></li>
+						<li><a href="./signup.php" class="text-info"> Registraté </a></li>
+					</ul>
+					<?php }?>
 				</div>
 			</div>
 		</nav>
