@@ -102,18 +102,13 @@
 						<div class="col-md-8">
 							<select class="form-control" name="comuna">
 								<?php
-								    require('config/conexionPDO.php');
-                                    $conn = Conectar();
-                                    $sql = "SELECT id, nombre FROM comuna";
-                                    $stmt = $conn->prepare($sql);
-                                    $result = $stmt->execute();
-                                    $rows = $stmt->fetchAll(\PDO::FETCH_OBJ);
-                                    foreach($rows as $row){
+								    require('./config/db.php');
+                                    $rows = $mysqli->query("SELECT id, nombre FROM comuna");
+                                    while($row = $rows->fetch_assoc()){
                                         ?>
-                                        <option value="<?php print($row->id); ?>"><?php echo utf8_encode($row->nombre); ?></option>
+                                        <option value="<?php echo $row['id']; ?>"><?php echo $row['nombre']; ?></option>
                                         <?php
                                     }
-
 								?>
 							</select>
 						</div>
@@ -124,16 +119,12 @@
 						<div class="col-md-8">
 							<select class="form-control" name="categoria">
 								<?php
-                                    $sql = "SELECT id, nombre_categoria FROM categoria";
-                                    $stmt = $conn->prepare($sql);
-                                    $result = $stmt->execute();
-                                    $rows = $stmt->fetchAll(\PDO::FETCH_OBJ);
-                                    foreach($rows as $row){
+                                    $rows = $mysqli->query("SELECT id, nombre_categoria FROM categoria");
+                                    while($row = $rows->fetch_assoc()){
                                         ?>
-                                        <option value="<?php print($row->id); ?>"><?php echo utf8_encode($row->nombre_categoria); ?></option>
+                                        <option value="<?php echo $row['id']; ?>"><?php echo $row['nombre_categoria']; ?></option>
                                         <?php
                                     }
-
 								?>
 							</select>
 						</div>
@@ -195,7 +186,6 @@
 					return true;
 				}
         }
-
         function validarP(){
             var valor = document.getElementById("precio").value;
 				if (valor == null || valor == "" || /^\s+$/.test(valor)) {
@@ -214,7 +204,6 @@
 					return true;
 				}
         }
-
         function validar(){
             if (validarN() && validarP() && validarD()){
                 document.Fproducto.submit();
