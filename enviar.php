@@ -29,6 +29,7 @@ if (!empty($_POST)) {
         
         $resultNew2 = $mysqli->query($sqlInsert2);
     }
+	header("Location: index.php");
     
 
 }
