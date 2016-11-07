@@ -3,10 +3,9 @@ require './config/db.php';
 require './funciones.php';
 session_start();
 
-
 if(!empty($_GET['producto']))
 {
-    $query= "SELECT producto.* , region.nombre_region FROM producto INNER JOIN comuna ON producto.id_comuna = comuna.id INNER JOIN provincia ON comuna.id_provincia = provincia.id INNER JOIN region ON provincia.id_region = region.id where producto.nombre like '%".$_GET['producto']."%'";
+    $query= "SELECT producto.* , region.nombre_region , categoria.nombre_categoria FROM producto INNER JOIN categoria ON producto.id_categoria = categoria.id INNER JOIN comuna ON producto.id_comuna = comuna.id INNER JOIN provincia ON comuna.id_provincia = provincia.id INNER JOIN region ON provincia.id_region = region.id where producto.nombre like '%".$_GET['producto']."%'";
     if(!empty($_GET['precio']))
     {
         $query .= " and precio < ".$_GET['precio']."";
@@ -30,7 +29,7 @@ if(!empty($_GET['producto']))
 elseif (!empty($_GET['categorias']))
 {
 
-    $query= "SELECT producto.* , region.nombre_region FROM producto INNER JOIN comuna ON producto.id_comuna = comuna.id INNER JOIN provincia ON comuna.id_provincia = provincia.id INNER JOIN region ON provincia.id_region = region.id where  producto.id_categoria =".$_GET['categorias'];
+    $query= "SELECT producto.* , region.nombre_region , categoria.nombre_categoria FROM producto INNER JOIN categoria ON producto.id_categoria = categoria.id INNER JOIN comuna ON producto.id_comuna = comuna.id INNER JOIN provincia ON comuna.id_provincia = provincia.id INNER JOIN region ON provincia.id_region = region.id where  producto.id_categoria =".$_GET['categorias'];
 
     if(!empty($_GET['precio']))
     {
@@ -48,7 +47,7 @@ elseif (!empty($_GET['categorias']))
 elseif (!empty($_GET['Categorias']))
 {
 
-    $query= "SELECT producto.* , region.nombre_region FROM producto INNER JOIN comuna ON producto.id_comuna = comuna.id INNER JOIN provincia ON comuna.id_provincia = provincia.id INNER JOIN region ON provincia.id_region = region.id where  id_categoria in(".implode(",",$_GET['Categorias']).")";
+    $query= "SELECT producto.* , region.nombre_region , categoria.nombre_categoria FROM producto INNER JOIN categoria ON producto.id_categoria = categoria.id INNER JOIN comuna ON producto.id_comuna = comuna.id INNER JOIN provincia ON comuna.id_provincia = provincia.id INNER JOIN region ON provincia.id_region = region.id where  id_categoria in(".implode(",",$_GET['Categorias']).")";
 
     if(!empty($_GET['precio']))
     {
@@ -64,7 +63,7 @@ elseif (!empty($_GET['Categorias']))
 }
 elseif(!empty($_GET['region']))
 {
-    $query= "SELECT producto.* , region.nombre_region FROM producto INNER JOIN comuna ON producto.id_comuna = comuna.id INNER JOIN provincia ON comuna.id_provincia = provincia.id INNER JOIN region ON provincia.id_region = region.id  where region.id =".$_GET['region'];
+    $query= "SELECT producto.* , region.nombre_region , categoria.nombre_categoria FROM producto INNER JOIN categoria ON producto.id_categoria = categoria.id INNER JOIN comuna ON producto.id_comuna = comuna.id INNER JOIN provincia ON comuna.id_provincia = provincia.id INNER JOIN region ON provincia.id_region = region.id  where region.id =".$_GET['region'];
 
     if(!empty($_GET['precio']))
     {
@@ -78,10 +77,14 @@ elseif(!empty($_GET['region']))
 
     $resultado= $mysqli->query($query);
 }
-
+elseif(!empty($_GET['id_persona']))
+{
+    $query= "SELECT producto.* , region.nombre_region , categoria.nombre_categoria FROM producto INNER JOIN categoria ON producto.id_categoria = categoria.id INNER JOIN comuna ON producto.id_comuna = comuna.id INNER JOIN provincia ON comuna.id_provincia = provincia.id INNER JOIN region ON provincia.id_region = region.id where id_usuario=".$_GET['id_persona'];
+    $resultado= $mysqli->query($query);
+}
 else
 {
-    $query= "SELECT producto.* , region.nombre_region FROM producto INNER JOIN comuna ON producto.id_comuna = comuna.id INNER JOIN provincia ON comuna.id_provincia = provincia.id INNER JOIN region ON provincia.id_region = region.id";
+    $query= "SELECT producto.* , region.nombre_region , categoria.nombre_categoria FROM producto INNER JOIN categoria ON producto.id_categoria = categoria.id INNER JOIN comuna ON producto.id_comuna = comuna.id INNER JOIN provincia ON comuna.id_provincia = provincia.id INNER JOIN region ON provincia.id_region = region.id";
     $resultado= $mysqli->query($query);
 }
 ?>
@@ -136,6 +139,7 @@ else
                 </a>
                 <ul class="dropdown-menu">
                   <li><a href="./perfil.php?id=<?php echo $_SESSION['id'];?>">Mi Perfil</a></li>
+                  <li><a href="./Busqueda.php?id_persona=<?php echo $_SESSION['id'];?>">Mis Publicaciones</a></li>
                   <li><a href="./publicar.php">Publicar</a></li>
                   <li><a href="./opciones.php">Opciones</a></li>
                   <li><a href="./logout.php">Cerrar Sesión</a></li>
@@ -214,7 +218,7 @@ else
                              echo "<tr>
                                     <td><img id=\"image\" class=\"img-responsive\" style=\"width:150px;height:150px;\" src=\"./get_img_producto.php?id=$row->id\"/></td>
                                     <td>$row->nombre</td>
-                                    <td>$row->id_categoria</td>
+                                    <td>$row->nombre_categoria</td>
                                     <td>$row->nombre_region</td>
                                     <td>$row->precio</td>
                                     <td><a href=\"./producto.php?id=$row->id\"><button>Link</button></a></td>

@@ -45,6 +45,7 @@
                                         <?php echo $_SESSION['nombre'];?> <span class="caret"></span> </a>
                                     <ul class="dropdown-menu">
                                         <li><a href="./perfil.php?id=<?php echo $_SESSION['id'];?>">Mi Perfil</a></li>
+                                        <li><a href="./Busqueda.php?id_persona=<?php echo $_SESSION['id'];?>">Mis Publicaciones</a></li>
                                         <li><a href="./publicar.php">Publicar</a></li>
                                         <li><a href="./opciones.php">Opciones</a></li>
                                         <li><a href="./logout.php">Cerrar Sesión</a></li>
