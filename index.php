@@ -94,7 +94,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-xs-10 ">
+                <div class="col-xs-10 col-xs-offset-2">
                     <div id="carrusel-de-nino" class="carousel slide" data-ride="carousel">
                         <!-- Indicators -->
                         <ol class="carousel-indicators">
