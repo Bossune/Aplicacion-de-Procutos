@@ -82,6 +82,26 @@ elseif(!empty($_GET['id_persona']))
     $query= "SELECT producto.* , region.nombre_region , categoria.nombre_categoria FROM producto INNER JOIN categoria ON producto.id_categoria = categoria.id INNER JOIN comuna ON producto.id_comuna = comuna.id INNER JOIN provincia ON comuna.id_provincia = provincia.id INNER JOIN region ON provincia.id_region = region.id where id_usuario=".$_GET['id_persona'];
     $resultado= $mysqli->query($query);
 }
+
+elseif(!empty($_GET['precio']))
+{
+    
+    $query= "SELECT producto.* , region.nombre_region , categoria.nombre_categoria FROM producto INNER JOIN categoria ON producto.id_categoria = categoria.id INNER JOIN comuna ON producto.id_comuna = comuna.id INNER JOIN provincia ON comuna.id_provincia = provincia.id INNER JOIN region ON provincia.id_region = region.id where precio < ".$_GET['precio'];    
+    
+    if(!empty($_GET['Categorias']))
+    {
+        $query .= " and id_categoria in(".implode(",",$_GET['Categorias']).")";
+
+    }
+
+    if(!empty($_GET['region']))
+    {
+        $query .= " and region.id =".$_GET['region'];
+
+    }
+    
+     $resultado= $mysqli->query($query);
+}
 else
 {
     $query= "SELECT producto.* , region.nombre_region , categoria.nombre_categoria FROM producto INNER JOIN categoria ON producto.id_categoria = categoria.id INNER JOIN comuna ON producto.id_comuna = comuna.id INNER JOIN provincia ON comuna.id_provincia = provincia.id INNER JOIN region ON provincia.id_region = region.id";
