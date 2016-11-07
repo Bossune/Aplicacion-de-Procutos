@@ -105,10 +105,18 @@
 						<label for="option" class="control-label col-md-2">Categoria:</label>
 						<div class="col-md-8">
 							<select class="form-control" name="categoria">
-								<option>esta info viede de bd</option>
-								<option>esta info viede de bd</option>
-								<option>esta info viede de bd</option>
-								<option>esta info viede de bd</option>
+								<?php
+                                    $sql = "SELECT id, nombre_categoria FROM categoria";
+                                    $stmt = $conn->prepare($sql);
+                                    $result = $stmt->execute();
+                                    $rows = $stmt->fetchAll(\PDO::FETCH_OBJ);
+                                    foreach($rows as $row){
+                                        ?>
+                                        <option value="<?php print($row->id); ?>"><?php echo utf8_encode($row->nombre_categoria); ?></option>
+                                        <?php
+                                    }
+
+								?>
 							</select>
 						</div>
 					</div>
