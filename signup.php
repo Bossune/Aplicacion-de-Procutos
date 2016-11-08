@@ -1,22 +1,21 @@
+<?php
+  require './config/db.php';
+  session_start();
+  if(isset($_SESSION['id'])){
+    header('Location: ./');
+    exit();
+  }
+  $categorias = $mysqli->query("SELECT * FROM categoria");
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Vende Todo - Perfil</title>
-
-    <!-- Bootstrap -->
-    <!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="./assets/css/bootstrap.min.css" >
-
-	<!-- Optional theme -->
-	<link rel="stylesheet" href="./assets/css/bootstrap-theme.min.css">
-
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="./assets/js/bootstrap.min.js"></script>
-
+    <title>Vende Todo - Registro de Usuario</title>
+	  <link rel="stylesheet" href="./assets/css/bootstrap.min.css" >
+	  <link rel="stylesheet" href="./assets/css/bootstrap-theme.min.css">
   </head>
   <body>
     <header>
@@ -37,9 +36,13 @@
                 <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button">
                 Categorias <span class="caret"></span>
                 </a>
-                <?php include('./ajax/categorias.php') ?>
+                <ul class="dropdown-menu">
+                  <?php
+                  while ($rowC = $categorias->fetch_assoc()) { ?>
+                  <li><a href="./Busqueda.php?categorias=<?php echo $rowC['id'];?>"><?php echo $rowC['nombre_categoria'];?></a></li>
+                  <?php } ?>
+                </ul>
               </li>
-              <li><a href="">Favoritos</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="./login.php" class="text-info"> Iniciar Sesión </a></li>
