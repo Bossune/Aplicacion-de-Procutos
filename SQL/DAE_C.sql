@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 06-11-2016 a las 01:56:10
+-- Tiempo de generación: 07-11-2016 a las 18:32:30
 -- Versión del servidor: 5.6.33
 -- Versión de PHP: 5.6.26
 
@@ -17,8 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `jaraneda`
+-- Base de datos: `DAE_C`
 --
+CREATE DATABASE IF NOT EXISTS `DAE_C` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `DAE_C`;
 
 -- --------------------------------------------------------
 
@@ -491,7 +493,7 @@ INSERT INTO `producto` (`id`, `id_usuario`, `id_comuna`, `id_categoria`, `nombre
 (3, 4, 123, 4, 'Suzuki SX4 sedan 1.6', 'Auto suzuki sx4 sedan año 2011 full equipo sin aire acondicionado. Sin deuda, sin prenda. Permiso de circulación pagado hasta marzo 2017 y revisión tecnica hasta agosto 2017.\r\n- alza vidrio automático en las 4 ventana.\r\n- cierre centralizado y alarmas.\r\n- frenos abs y 2 airbag (piloto y copiloto)\r\n- Radio original y control de radio desde el volante.\r\n- espejos eléctricos.\r\n- bloqueo de motor.\r\n- 33.000 km.\r\n\r\n!!!!RECIBO OFERTAS!!!!!', 5100000, 'Venta', 1, '2016-11-05 10:45:44', '2016-11-05 19:52:59'),
 (4, 1, 255, 1, 'Macbook Pro 13,3/500gb/4gb Ram Md101ci/a Sellado', 'Apple Macbook Pro MD101CI/A Nuevo Sellado\r\nCaracterísticas\r\n\r\nPantalla ancha brillante retroiluminada por LED de 13.3″.\r\n\r\nProcesador dual core Intel Core i5 de 2.5 GHz con 3 MB de caché L3.\r\n\r\n4 GB de memoria RAM DDR3 de 1600 MHz.\r\n\r\nDisco duro de 500 GB de 5400 rpm.\r\n\r\nPuertos Thunderbolt (10gb/s), USB 3.0 (5GB/S), FireWire 800 (800MB/S).\r\n\r\nEthernet y lector de tarjetas SDXC.', 629990, 'Venta', 1, '2016-11-05 01:14:39', '2016-11-05 01:14:39'),
 (5, 5, 212, 2, 'Lámpara Solar 9 Led Con Usb', 'Lámpara solar portable y liviana, se puede usar en cualquier lugar ya que se puede colgar de la hebilla de metal y carga a través del panel solar, también puede ser cargada a través del cable USB e Incluye sensor de movimiento¿.\r\nLED Lumen: 72 LM.\r\n9 LED.\r\nPanel solar: Poly-silicon 5V 60 mA.\r\nBatería: Li-polymer 3.7V 500mA.\r\nImpermeable IP55.\r\nTiempo de carga solar: 8 horas.\r\nTiempo de carga por USB: 1 hora.\r\nTiempo de iluminación contínua: 3 horas.\r\nTiempo de iluminación por inducción: 30 s*200 ciclos.\r\nÁngulo de iluminación: 30°, 2 mt de distancia.\r\nDimensiones: 7 cm de radio lampara.\r\nFabricado de ABS y acero inoxidable.\r\nLuz blanca.\r\nIncluye: lámpara solar, cable USB y manual de usuario.', 15990, 'Venta', 1, '2016-11-05 13:08:18', '2016-11-05 13:08:18'),
-(6, 2, 76, 0, 'Box Am. Beat 2 Plazas Bn Tabor S/tex  \r\n', 'DESCRIPCIÓN\r\nBox Am. Beat 2 Plazas BN Tabor S/TEX\r\nCaracterísticas principales:\r\nMarca: Rosen\r\nTipo de Base Normal\r\nLargo: 200 cm\r\nTela: Jacquard y acolchado continuo\r\nPlazas: 2 Plazas\r\nAcolchado: Acolchado fuelle continuo, fibra de poliester 160 grs/m2\r\nComplementos: Sólo Maderas\r\nRelleno Colchón Parrilla Bonnell calibre 2.28 mm\r\nRuedas Modernas ruedas metalicas, incluye 4 ruedas\r\nAltura Base 35 cm. incluye ruedas\r\nAltura Colchón 21 +/- 1 cm.\r\nAncho: 150 cm\r\nIncluye Textil: No\r\nAltura Total: 56 cm.', 240000, 'Venta', 1, '2016-11-05 10:17:44', '2016-11-05 10:17:44');
+(6, 2, 76, 2, 'Box Am. Beat 2 Plazas Bn Tabor S/tex  \r\n', 'DESCRIPCIÓN\r\nBox Am. Beat 2 Plazas BN Tabor S/TEX\r\nCaracterísticas principales:\r\nMarca: Rosen\r\nTipo de Base Normal\r\nLargo: 200 cm\r\nTela: Jacquard y acolchado continuo\r\nPlazas: 2 Plazas\r\nAcolchado: Acolchado fuelle continuo, fibra de poliester 160 grs/m2\r\nComplementos: Sólo Maderas\r\nRelleno Colchón Parrilla Bonnell calibre 2.28 mm\r\nRuedas Modernas ruedas metalicas, incluye 4 ruedas\r\nAltura Base 35 cm. incluye ruedas\r\nAltura Colchón 21 +/- 1 cm.\r\nAncho: 150 cm\r\nIncluye Textil: No\r\nAltura Total: 56 cm.', 240000, 'Venta', 1, '2016-11-05 10:17:44', '2016-11-05 10:17:44');
 
 -- --------------------------------------------------------
 
@@ -622,7 +624,7 @@ INSERT INTO `usuario` (`id`, `nombre`, `email`, `password`, `avatar`, `fecha_cre
 (2, 'Gustavo Perez', 'gperesad@gmail.com', '15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225', 'avatar2.jpg', '2016-10-17 10:35:37', '2016-10-17 10:35:37'),
 (3, 'Sheldon Cooper', 'sheldon@gmail.com', '15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225', 'avatar.jpg', '2016-10-30 17:46:45', '2016-10-30 17:46:45'),
 (4, 'Pedro Gomez', 'pedrogomez@gmail.com', '15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225', 'avatar.jpg', '2016-10-30 17:47:43', '2016-10-30 17:47:43'),
-(5, 'Javier Araneda', 'kazehaya@live.cl', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'avatar.jpg', '2016-11-05 18:51:39', '2016-11-05 18:51:39');
+(5, 'Javier Araneda', 'kazehaya@live.cl', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', 'tX7rTYoVKUAnfQlsevaW9xIEHLGF2Da06(15).jpg', '2016-11-05 18:51:39', '2016-11-05 18:51:39');
 
 -- --------------------------------------------------------
 
