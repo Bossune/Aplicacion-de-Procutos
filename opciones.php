@@ -13,7 +13,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Vende Todo - Perfil</title>
+    <title>Vende Todo - Opciones</title>
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css" >
     <link rel="stylesheet" href="./assets/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
