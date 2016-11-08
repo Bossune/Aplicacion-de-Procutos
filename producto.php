@@ -63,7 +63,6 @@ else
 								</a>
                                 <?php get_Categorias_nav();?>
                             </li>
-                            <li><a href="">Favoritos</a></li>
                         </ul>
                         <?php if(isset($_SESSION['id'])){?>
                             <ul class="nav navbar-nav navbar-right">

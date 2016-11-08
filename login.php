@@ -44,7 +44,6 @@
                   <li><a href="">Vehiculos</a></li>
                 </ul>
               </li>
-              <li><a href="">Favoritos</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="./login.php" class="text-info"> Iniciar Sesión </a></li>
